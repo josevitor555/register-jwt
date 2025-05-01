@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const Register = () => {
 
@@ -50,7 +50,16 @@ const Register = () => {
                     />
                 </div>
 
-                <button type="submit"> Register Now </button>
+
+                <div className="container-buttons">
+                    <a href="#">
+                        <Link to="/login"> Already have an account? </Link>
+                    </a>
+                    <div className="flex items-center justify-between">
+                        <button type="button" onClick={() => navigate("/")}> Cancel </button>
+                        <button type="submit"> Register Now </button>
+                    </div>
+                </div>
             </form>
         </div>
     )

@@ -43,6 +43,7 @@
   border-radius: 5px;
   font-size: 1rem;
   border: 1px solid #fff;
+  margin-bottom: 10px;
 }
 
 .container .form button {
@@ -92,7 +93,74 @@
   border: none;
   cursor: pointer;
   margin: 0px 10px;
+} 
+
+.container .container-buttons .material-checkbox {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  color: #777777;
+  cursor: pointer;
 }
+
+.container .container-buttons .material-checkbox input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.container .container-buttons .checkmark {
+  position: relative;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-right: 12px;
+  border: 2px solid #f1e6ce;
+  border-radius: 4px;
+  transition: all 0.3s;
+}
+
+.container .container-buttons .material-checkbox input[type="checkbox"]:checked ~ .checkmark {
+  background-color: #2F3300;
+  border-color: #f1e6ce;
+}
+
+.container .container-buttons .material-checkbox input[type="checkbox"]:checked ~ .checkmark:after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 6px;
+  width: 4px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.container .container-buttons .material-checkbox input[type="checkbox"]:focus ~ .checkmark {
+  box-shadow: 0 0 0 2px #ece1cb;
+}
+
+.container .container-buttons .material-checkbox:hover input[type="checkbox"] ~ .checkmark {
+  border-color: #FFF2D7;
+}
+
+.container .container-buttons .material-checkbox input[type="checkbox"]:disabled ~ .checkmark {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.container .container-buttons .material-checkbox input[type="checkbox"]:disabled ~ .checkmark:hover {
+  border-color: #4d4d4d;
+}
+
+.container .container-buttons a {
+  color: #FFF2D7;
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+
 
 body {
   background: linear-gradient(45deg, #27282D, #232428);

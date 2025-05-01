@@ -1,7 +1,6 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom";
 
-
 const Login = () => {
 
     // Hooks
@@ -44,7 +43,19 @@ const Login = () => {
                     />
                 </div>
                 
-                <button type="submit"> Enter </button>
+                <div className="container-buttons">
+                    <div className="m-2">
+                        <label className="material-checkbox">
+                            <input type="checkbox" />
+                            <span className="checkmark"></span>
+                            Remenber me
+                        </label>
+                    </div>
+                    <div className="flex items-center justify-between">
+                        <button type="button" onClick={() => navigate("/")}> Cancel </button>
+                        <button type="submit"> Login Now </button>
+                    </div>
+                </div>
             </form>
         </div>
     )
