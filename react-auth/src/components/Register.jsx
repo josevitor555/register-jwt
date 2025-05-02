@@ -24,6 +24,7 @@ const Register = () => {
 
             // Save the token to local storage
             localStorage.setItem('token', response.data.token); // Store the token in local storage
+            localStorage.setItem('user', JSON.stringify(response.data.user)); // Store the user in local storage
 
             // Navigate to the home page after successful registration
             navigate("/welcome"); // Redirect to the home page

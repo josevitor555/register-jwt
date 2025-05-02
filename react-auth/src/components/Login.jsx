@@ -23,6 +23,7 @@ const Login = () => {
 
             // Save the token to local storage
             localStorage.setItem('token', response.data.token); // Store the token in local storage
+            localStorage.setItem("user", JSON.stringify(response.data.user));
 
             // Redirect to the home page after successful login
             navigate("/welcome"); // Redirect to the home page

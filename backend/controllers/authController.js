@@ -20,7 +20,7 @@ export const register = ('/register', verifyToken, async (req, res) => {
         // Check if user already exists
         const userExists = await User.findOne({ email });
         if (userExists) {
-          return res.status(400).json({ message: 'User already exists' }); // Check if user already exists
+          return res.status(400).json({ message: 'User already exists.' }); // Check if user already exists
         }
     
         // Crypt the password
@@ -58,7 +58,7 @@ export const login = ('/login', verifyToken, async (req, res) =>  {
         // Compare passwords
         const valid = await bcrypt.compare(password, user.password);
         if (!valid) {
-          return res.status(400).json({ message: 'Invalid credentials' }); // Check if password is valid
+          return res.status(400).json({ message: 'Invalid credentials.' }); // Check if password is valid
         }
     
         // Generate JWT token with user ID and secret key
