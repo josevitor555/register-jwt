@@ -1,4 +1,5 @@
 import { useState } from "react";
+import axios from 'axios';
 import { useNavigate, Link } from "react-router-dom";
 
 const Register = () => {
@@ -7,17 +8,28 @@ const Register = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const navigate = useNavigate();
+    const navigate = useNavigate(); // Hook to programmatically navigate to different routes
 
     // Functions
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        try {
-            await Register(name, email, password);
-            navigate("/login"); // Redirect to the login page after successful registration
+        try  {
+            // Send a POST request to the server to register the user
+            const response = await axios.post('http://localhost:3000/api/auth/register', {
+                name,
+                email,
+                password
+            });
+
+            // Save the token to local storage
+            localStorage.setItem('token', response.data.token); // Store the token in local storage
+
+            // Navigate to the home page after successful registration
+            navigate("/welcome"); // Redirect to the home page
         } catch (error) {
-            alert("Registration failed. Please try again.");
+            console.error("Error registering user:", error); // Log the error to the console
+            alert("Error registering user. Please try again."); // Show an alert to the user
         }
     }
 
@@ -44,17 +56,14 @@ const Register = () => {
                 <div className="form-group">
                     <label> Password </label>
                     <input
-                        type="passord"
+                        type="password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)} required
                     />
                 </div>
 
-
                 <div className="container-buttons">
-                    <a href="#">
-                        <Link to="/login"> Already have an account? </Link>
-                    </a>
+                    <Link to="/login"> Already have an account? </Link>
                     <div className="flex items-center justify-between">
                         <button type="button" onClick={() => navigate("/")}> Cancel </button>
                         <button type="submit"> Register Now </button>

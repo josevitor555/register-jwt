@@ -1,10 +1,12 @@
 import express from 'express';
-const router = express.Router(); // Import the express module and create a new router instance
+import { register, login } from '../controllers/authController.js'; // Importa as funções do controlador
 
-import { login, register } from '../controllers/authController.js';
+const router = express.Router();
 
-// Define the routes for authentication
-router.post('/register', register); // Route for user registration
-router.post('/login', login); // Route for user login
+// Register router
+router.post('/register', register);
 
-export default router; // Export the router for use in the main app
+// Login Router
+router.post('/login', login);
+
+export default router;
