@@ -28,19 +28,19 @@ const Welcome = () => {
         localStorage.removeItem("token");
         localStorage.removeItem("user");
     
-        alert("You are logout!");
+        alert("You have logged out, you can log in again.");
         navigate("/login");
     }
 
     return (
-        <div className="user-information max-w-md mx-auto mt-10 p-6 rounded-lg">
-            <h2 className="text-2xl text-gray-300 font-bold mb-4"> Welcome, {user.name} 👋</h2>
+        <div className="user-information w-[500px] mt-10 p-6 rounded-lg">
+            <h2 className="text-2xl text-gray-300 font-bold mb-4"> Welcome, {user.name}! </h2>
             <p className="text-gray-100 mb-2"> Email: <span className="font-medium"> {user.email} </span> </p>
             <p className="text-gray-200 mb-6"> You are logged in a protected route. </p>
 
             {/* Button to logout account */}
             <button className="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded" onClick={handleLogout}>
-                Logout
+                Exit
             </button>
         </div>
     );

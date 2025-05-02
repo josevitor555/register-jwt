@@ -30,7 +30,7 @@ const Register = () => {
             navigate("/welcome"); // Redirect to the home page
         } catch (error) {
             console.error("Error registering user:", error); // Log the error to the console
-            alert("Error registering user. Please try again."); // Show an alert to the user
+            alert("Email or username already exists. Please try again."); // Show an alert to the user
         }
     }
 

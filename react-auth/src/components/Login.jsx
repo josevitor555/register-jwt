@@ -29,7 +29,7 @@ const Login = () => {
             navigate("/welcome"); // Redirect to the home page
         } catch (error) {
             console.error("Error logging in:", error); // Log the error to the console
-            alert("Error logging in. Please try again."); // Show an alert to the user
+            alert("Invalid email or password. Please try again."); // Show an alert to the user
         }
     }
 
@@ -57,12 +57,14 @@ const Login = () => {
                 </div>
                 
                 <div className="container-buttons">
-                    <div className="m-2">
+                    <div className="m-2 flex items-center justify-between">
                         <label className="material-checkbox">
                             <input type="checkbox" />
                             <span className="checkmark"></span>
                             Remenber me
                         </label>
+
+                        <span className="text-white cursor-pointer" onClick={() => navigate("/register")}> Don't have an account? </span>
                     </div>
                     <div className="flex items-center justify-between">
                         <button type="button" onClick={() => navigate("/")}> Cancel </button>

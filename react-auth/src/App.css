@@ -163,8 +163,8 @@
 
 .user-information {
   background: linear-gradient(45deg, #27282D, #232428);
+  text-align: center;
 }
-
 
 body {
   background: linear-gradient(45deg, #27282D, #232428);
