@@ -1,5 +1,6 @@
 import express from 'express';
-import { register, login } from '../controllers/authController.js'; // Importa as funções do controlador
+import { register, login, deleteAccount } from '../controllers/authController.js'; // Importa as funções do controlador
+import verifyToken from '../middlewares/authMiddleware.js';
 
 const router = express.Router();
 
@@ -8,5 +9,8 @@ router.post('/register', register);
 
 // Login Router
 router.post('/login', login);
+
+// Delete Account User
+router.delete('/deleteAccount', verifyToken, deleteAccount);
 
 export default router;

@@ -1,0 +1,5 @@
+| Tarefa                | Com Driver Nativo                | Com Mongoose                              |
+| --------------------- | -------------------------------- | ----------------------------------------- |
+| Conectar à Collection | `db.collection('users')`         | `mongoose.model('users', userSchema)`     |
+| Inserir               | `collection.insertOne(doc)`      | `user.save()` ou `User.create()`          |
+| Requisição            | Precisa passar o objeto completo | Só passa os dados no construtor ou função |

@@ -2,21 +2,16 @@ import dotenv from 'dotenv';
 dotenv.config(); // Load environment variables from .env file
 
 // import express from 'express';
-import User from '../models/User.js'; // Import the User model to interact with the database
+import User from '../models/insertUser.js'; // Import the User model to interact with the database
 import bcrypt from 'bcryptjs'; // Import bcrypt for password hashing
 import jwt from 'jsonwebtoken'; // Import jsonwebtoken for generating JWT tokens
-import verifyToken from '../middlewares/authMiddleware.js';
-// import router from '../routes/auth.js';
-
-// // Create a new router instance
-// router = express.Router(); // Import the express module and create a new router instance
 
 // Route for user registration
-export const register = ('/register', verifyToken, async (req, res) => {
+export const register = ('/register', async (req, res) => {
     const { name, email, password } = req.body; // Destructure the request body to get name, email, and password
     
       try {
-    
+
         // Check if user already exists
         const userExists = await User.findOne({ email });
         if (userExists) {
@@ -30,13 +25,24 @@ export const register = ('/register', verifyToken, async (req, res) => {
         const user = new User({ name, email, password: hashedPassword });
     
         // Save the user to the database
-        await user.save(); // Save the user to the database
+        await user.save().then(() => {
+          console.log(user);
+        }).catch((error) => {
+          console.log(error);
+        });
     
         // Generate JWT token with user ID and secret key
         const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
         
         // Send response with token and user info
-        res.status(201).json({ token, user: { id: user._id, name: user.name, email: user.email } }); // Respond with token and user info
+        res.status(201).json({
+          token,
+          user: {
+            id: user._id,
+            name: user.name,
+            email: user.email
+          }
+        });
       
       } catch (error) {
         console.error(error);
@@ -45,7 +51,7 @@ export const register = ('/register', verifyToken, async (req, res) => {
 });
 
 // Route for user login
-export const login = ('/login', verifyToken, async (req, res) =>  {
+export const login = ('/login', async (req, res) =>  {
     const { email, password } = req.body; // Destructure the request body to get email and password
     
       try {
@@ -65,10 +71,41 @@ export const login = ('/login', verifyToken, async (req, res) =>  {
         const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
     
         // Send response with token and user info
-        res.status(200).json({ token, user: { id: user._id, name: user.name, email: user.email } }); // Respond with token and user info
+        res.status(200).json({
+          token,
+          user: {
+            id: user._id,
+            name: user.name,
+            email: user.email
+          }
+        });
       
       } catch (error) {
         console.error(error);
         return res.status(500).json({ message: 'Error fetching user' });
     }
 });
+
+// Delete account
+export const deleteAccount = async(req, res) => {
+  try {
+    const userId = req.user.id;
+
+    const deleteUser = await User.findByIdAndDelete(userId);
+    if (!deleteUser) {
+      return res.status(404).json({
+        message: "User not found"
+      });
+    }
+
+    // Delete the user account
+    res.status(200).json({
+      message: "User account deleted"
+    })
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      message: "Errot to delete account"
+    });
+  }
+}
