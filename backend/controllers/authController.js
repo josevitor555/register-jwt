@@ -90,22 +90,25 @@ export const login = ('/login', async (req, res) =>  {
 export const deleteAccount = async(req, res) => {
   try {
     const userId = req.user.id;
+    if (!userId) {
+      console.error("No user ID in the request");
+      return res.status(400).json({ message: "User ID missing" });
+    }
 
     const deleteUser = await User.findByIdAndDelete(userId);
     if (!deleteUser) {
       return res.status(404).json({
         message: "User not found"
       });
+    } else {
+      console.log(`User with ID ${userId} deleted successfully`);
     }
 
-    // Delete the user account
-    res.status(200).json({
-      message: "User account deleted"
-    })
+    res.status(200).json();
   } catch (error) {
     console.error(error);
     res.status(500).json({
-      message: "Errot to delete account"
+      message: "Error to delete account"
     });
   }
 }

@@ -28,7 +28,7 @@ const Login = () => {
             // Redirect to the home page after successful login
             navigate("/welcome"); // Redirect to the home page
         } catch (error) {
-            console.error("Error logging in:", error); // Log the error to the console
+            console.error("Error loging in: ", error); // Log the error to the console
             alert("Invalid email or password. Please try again."); // Show an alert to the user
         }
     }
