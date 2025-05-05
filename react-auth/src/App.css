@@ -178,61 +178,63 @@
   }
 }
 
-/* Style for loading screen icon */ 
-.spinner {
-  width: 44px;
-  height: 44px;
-  animation: spinner-y0fdc1 2s infinite ease;
-  transform-style: preserve-3d;
+/* Style for loading screen icon */
+
+.loader__green {
+  width: 50px;
+  height: 50px;
+  display: inline-block;
+  border: 5px solid #00ff88;
+  border-radius: 50%;
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+  animation: rot4 1s infinite;
 }
- 
-.spinner > div {
-  background: rgba(0,77,255,0.2);
-  height: 100%;
-  position: absolute;
-  width: 100%;
-  border: 2px solid #004dff;
-}
- 
-.spinner div:nth-of-type(1) {
-  transform: translateZ(-22px) rotateY(180deg);
-}
- 
-.spinner div:nth-of-type(2) {
-  transform: rotateY(-270deg) translateX(50%);
-  transform-origin: top right;
-}
- 
-.spinner div:nth-of-type(3) {
-  transform: rotateY(270deg) translateX(-50%);
-  transform-origin: center left;
-}
- 
-.spinner div:nth-of-type(4) {
-  transform: rotateX(90deg) translateY(-50%);
-  transform-origin: top center;
-}
- 
-.spinner div:nth-of-type(5) {
-  transform: rotateX(-90deg) translateY(50%);
-  transform-origin: bottom center;
-}
- 
-.spinner div:nth-of-type(6) {
-  transform: translateZ(22px);
-}
- 
-@keyframes spinner-y0fdc1 {
+
+@keyframes rot4 {
   0% {
-   transform: rotate(45deg) rotateX(-25deg) rotateY(25deg);
+    transform: rotate(0);
   }
- 
+
   50% {
-   transform: rotate(45deg) rotateX(-385deg) rotateY(25deg);
+    transform: rotate(180deg);
+    border-top-color: #1b8b46;
+    border-bottom-color: #33f392;
+    border-right-color: transparent;
+    border-left-color: transparent;
   }
- 
+
   100% {
-   transform: rotate(45deg) rotateX(-385deg) rotateY(385deg);
+    transform: rotate(360deg);
+  }
+}
+
+.loader__red {
+  width: 50px;
+  height: 50px;
+  display: inline-block;
+  border: 5px solid #ff1100;
+  border-radius: 50%;
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+  animation: rot5 1s infinite;
+}
+
+@keyframes rot5 {
+  0% {
+    transform: rotate(0);
+  }
+
+  50% {
+    transform: rotate(180deg);
+    border-top-color: #8b2e2e;
+    border-bottom-color: #f35c21;
+    border-right-color: transparent;
+    border-left-color: transparent;
+  }
+
+  100% {
+    transform: rotate(360deg);
   }
 }
 

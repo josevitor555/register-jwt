@@ -5,16 +5,9 @@ import axios from "axios";
 const Spinner = () => {
     return (
         <div className="flex items-center flex-col">
-            <div className="spinner">
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
+            <div className="loader__green"></div>
 
-            <span className="text-white text-2xl mt-6"> Loading... </span>
+            <span className="text-white text-2xl mt-4"> Loading... </span>
         </div>
     );
 };
@@ -58,16 +51,8 @@ const Welcome = () => {
     if (deleting) {
         return (
             <div className="flex items-center flex-col">
-                <div className="spinner">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                </div>
-    
-                <span className="text-white mt-6"> Deleting your account... </span>
+                <div class="loader__red"></div>
+                <span className="text-white mt-4"> Deleting your account... </span>
             </div>
         );
     }
