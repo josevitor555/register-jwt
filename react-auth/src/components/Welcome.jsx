@@ -38,7 +38,7 @@ const Welcome = () => {
                 // setLoading(false);
                 // setUser(JSON.parse(userData));
             } catch (error) {
-                console.error("Error to load date from user.");
+                console.error("Error to load date from user.", error);
                 navigate("/login");
             }
         }
