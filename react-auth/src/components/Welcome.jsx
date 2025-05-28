@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom"
 import axios from "axios";
 
+const apiUrl = import.meta.env.BACKEND_URL; // -> Backend URL: https://register-jwt.onrender.com
+// const apiUrl = import.meta.env.VITE_API_URL;
+
 const Spinner = () => {
     return (
         <div className="flex items-center flex-col">
@@ -51,7 +54,7 @@ const Welcome = () => {
     if (deleting) {
         return (
             <div className="flex items-center flex-col">
-                <div class="loader__red"></div>
+                <div className="loader__red"></div>
                 <span className="text-white mt-4"> Deleting your account... </span>
             </div>
         );
@@ -76,7 +79,7 @@ const Welcome = () => {
         setDeleting(true);
 
         try {
-            await axios.delete("http://localhost:3000/api/auth/deleteAccount", {
+            await axios.delete(`${apiUrl}/api/auth/deleteAccount`, { // "http://localhost:3000/api/auth/deleteAccount"
                 headers: {
                     "Authorization": `Bearer ${token}`
                 }
