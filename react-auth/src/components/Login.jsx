@@ -2,8 +2,8 @@ import { useState } from "react";
 import axios from 'axios'
 import { useNavigate } from "react-router-dom";
 
-const apiUrl = import.meta.env.BACKEND_URL; // -> Backend URL: https://register-jwt.onrender.com
-// const apiUrl = import.meta.env.VITE_API_URL;
+// const apiUrl = import.meta.env.BACKEND_URL; // -> Backend URL: https://register-jwt.onrender.com
+const apiUrl = import.meta.env.VITE_API_URL;
 
 const Login = () => {
 
