@@ -238,6 +238,64 @@
   }
 }
 
+/* Media Querie */
+@media (max-width: 768px) {
+  .container {
+    width: 100%;
+    max-width: 340px;
+    padding: 10px 10px;
+    margin: 0 auto;
+  }
+
+  .container .form {
+    display: flex;
+    flex-direction: column;
+    padding: 16px 10px;
+    width: 100%;
+    /* background: red; */
+  }
+
+  .container .form button {
+    background: #FFF2D7;
+    color: #33353D;
+    padding: 10px 10px;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    margin-top: 14px;
+    border: none;
+    cursor: pointer;
+  }
+
+  /* .container.register {
+    background: red;
+  } */
+
+  .home-container {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .home-container .home-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 10px;
+  }
+
+  .home-container .home-buttons button {
+    width: 100%;
+    background: #FFF2D7;
+    color: #33353D;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    margin-top: 14px;
+    border: none;
+    cursor: pointer;
+  }
+}
+
 body {
   background: linear-gradient(45deg, #27282D, #232428);
   height: 100vh;

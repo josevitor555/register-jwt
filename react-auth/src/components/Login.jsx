@@ -2,6 +2,8 @@ import { useState } from "react";
 import axios from 'axios'
 import { useNavigate } from "react-router-dom";
 
+const apiUrl = import.meta.env.VITE_API_URL; // -> Backend URL: https://register-jwt.onrender.com
+
 const Login = () => {
 
     // Hooks
@@ -15,7 +17,7 @@ const Login = () => {
 
         try {
             // Send credentials to the server for authentication
-            const response = await axios.post('http://localhost:3000/api/auth/login', {
+            const response = await axios.post(`${apiUrl}/api/auth/login`, { // "http://localhost:3000/api/auth/login"
                 email,
                 password
             });
