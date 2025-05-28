@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom"
 import axios from "axios";
 
-// const apiUrl = import.meta.env.BACKEND_URL; // -> Backend URL: https://register-jwt.onrender.com/auth/register
-const apiUrl = import.meta.env.VITE_API_URL;
+const apiUrl = import.meta.env.BACKEND_URL; // -> Backend URL: https://register-jwt.onrender.com/auth/register
+// const apiUrl = import.meta.env.VITE_API_URL;
 
 const Spinner = () => {
     return (
